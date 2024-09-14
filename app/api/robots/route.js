@@ -1,7 +1,6 @@
 import { mongooseConnect } from "@/lib/mongoose";
 import Robot from "@/models/RobotModel";
 import { NextResponse } from "next/server";
-import Message from "@/models/MessageModel";
 
 const getRobots = async (req) => {
     const { searchParams } = new URL(req.url);
@@ -22,6 +21,9 @@ const getRobots = async (req) => {
         return NextResponse.json({ message: "Internal server error" }, { status: 500 });
     }
 };
+
+
+
 
 const deleteRobot = async (req) => {
     const { searchParams } = new URL(req.url);

@@ -168,6 +168,7 @@ const RobotsForm = ({
                             <option value="Spraying">Spraying</option>
                             <option value="Seeding">Seeding</option>
                             <option value="Aeriel Monitoring">Aeriel Monitering</option>
+                            <option value="Climate Monitoring">Climate Monitering</option>
                         </select>
                     </div>
                 </div>
