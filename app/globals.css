@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+input, textarea, select{
+  @apply border border-gray-300 rounded-sm shadow-sm mb-2 px-2 py-1 w-full focus:outline-blue-900;
+}
+
+h1{
+  @apply text-gray-800 text-xl font-semibold mb-4;
+}
+
+label{
+  @apply font-semibold;
+}
+
+.btn-default, .btn-red, .btn-primary, .btn-green, .btn-blue{
+  @apply text-white px-4 py-1 rounded-sm
+}
+.btn-primary{
+  @apply bg-primary
+}
+.btn-blue{
+  @apply bg-white border border-primary text-primary py-0
+}
+.btn-green{
+  @apply bg-green-600
+}
+.btn-red{
+  @apply bg-white text-red-500 border border-red-500 py-0
+}
+.btn-default{
+  @apply bg-gray-500
+}
+
+table.basic{
+  @apply w-full bg-white rounded-sm shadow-md;
+}
+table.basic thead tr td,
+table.basic thead tr th {
+  @apply bg-blue-100  text-gray-600 uppercase font-semibold border-b px-4 py-2 border-gray-400;
+}
+table.basic tr td{
+  @apply py-1 px-4;
+}
+table.basic tr td span{
+  @apply text-gray-500;
+}
+table.basic tr td h5{
+  @apply font-semibold;
+}
+table.basic a.blue{
+  @apply bg-white border border-primary text-primary font-semibold  px-2 rounded-sm inline-flex items-center gap-1 mr-2;
+}
+
+table.basic a.red{
+  @apply bg-white border border-red-500 text-red-500 font-semibold  px-2 rounded-sm inline-flex items-center gap-1 mr-2;
+}
+
+.image{
+  @apply h-full;
+}
