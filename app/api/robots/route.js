@@ -1,40 +1,6 @@
 import { mongooseConnect } from "@/lib/mongoose";
 import Robot from "@/models/RobotModel";
 import { NextResponse } from "next/server";
-import Message from "@/models/MessageModel";
-import Cors from 'cors';
-
-// List of allowed origins
-const allowedOrigins = ['http://localhost:3000', 'https://agribot.vercel.app'];
-
-// Initializing the cors middleware
-const cors = Cors({
-  origin: (origin, callback) => {
-    // Allow requests with no origin (like mobile apps or curl requests)
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.includes(origin)) {
-      return callback(null, true);
-    } else {
-      return callback(new Error('Not allowed by CORS'));
-    }
-  },
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true,  // Optional if you need to allow credentials like cookies
-  allowedHeaders: ['Content-Type', 'Authorization'],
-});
-
-// Helper function to run middleware
-function runMiddleware(req, res, fn) {
-  return new Promise((resolve, reject) => {
-    fn(req, res, (result) => {
-      if (result instanceof Error) {
-        return reject(result);
-      }
-      return resolve(result);
-    });
-  });
-}
-
 
 const getRobots = async (req) => {
     const { searchParams } = new URL(req.url);
