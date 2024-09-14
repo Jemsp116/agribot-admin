@@ -21,7 +21,7 @@ const MessagePage = () => {
         }).catch((err) => {
             console.log("Error : ", err)
         })
-    }, []);
+    }, [id]);
 
     return (
         <Layout>

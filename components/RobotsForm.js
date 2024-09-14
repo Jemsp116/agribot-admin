@@ -148,7 +148,7 @@ const RobotsForm = ({
                             )
                         })} */}
                         {!!form.imageURLs?.length && form.imageURLs.map((link, index) => (
-                            <div className='bg-white p-2 border border-gray-300 shadow-md rounded-sm w-auto h-28'>
+                            <div key={index} className='bg-white p-2 border border-gray-300 shadow-md rounded-sm w-auto h-28'>
                                 <Image className='image rounded-lg' width={100} height={100} src={link.imageURL} alt="product" />
                             </div>
                         ))}
