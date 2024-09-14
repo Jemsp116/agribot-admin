@@ -1,6 +1,6 @@
 import { Schema, model, models } from "mongoose"
 
-const LoginSchema = new Schema({
+const AdminSchema = new Schema({
     name: {
         type: String,
         required: [true, "Must provide a name."],
@@ -20,6 +20,6 @@ const LoginSchema = new Schema({
 }
 );
 
-const Login = models.Login || model('Login', LoginSchema);
+const Admin = models.Admin || model('Admin', AdminSchema);
 
-export default Login;
+export default Admin;

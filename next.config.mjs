@@ -10,7 +10,7 @@ const nextConfig = {
             },
             {
               protocol: 'https',
-              hostname: 'sloth-bear-conservation.s3.eu-north-1.amazonaws.com',
+              hostname: 'widechoice-ecommerce.s3.eu-north-1.amazonaws.com',
               port: '',
               pathname: '/**',
             },
