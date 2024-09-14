@@ -13,11 +13,7 @@
     "@nextui-org/react": "^2.4.7",
     "axios": "^1.7.7",
     "bcrypt": "^5.1.1",
-<<<<<<< HEAD
-    "chart.js": "^4.4.4",
-=======
-    "cors": "^2.8.5",
->>>>>>> 0b25a424a077d8ef514c431e009204495302f2b0
+
     "framer-motion": "^11.3.19",
     "mongodb": "^6.8.0",
     "mongoose": "^8.5.4",
