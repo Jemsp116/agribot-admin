@@ -9,8 +9,7 @@ const AddRobot = () => {
 
   useEffect(() => {
     axios.get(`/api/robots`).then((res) => {
-      setProject(res.data.data);
-      console.log(res.data.data);
+      setProject(res.data);
     })
   }, []);
 

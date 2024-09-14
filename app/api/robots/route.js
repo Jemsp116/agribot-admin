@@ -10,15 +10,15 @@ const getRobots = async (req) => {
         if (id) {
             const robot = await Robot.findOne({ _id: id });
             if (!robot) {
-                return NextResponse.json({ success: false, message: "Robot not found" }, { status: 404 });
+                return NextResponse.json({ message: "Robot not found" }, { status: 404 });
             }
-            return NextResponse.json({ success: true, data: robot });
+            return NextResponse.json({ ...robot });
         }
         const robots = await Robot.find();
-        return NextResponse.json({ success: true, data: robots });
+        return NextResponse.json({ ...robots });
     } catch (error) {
         console.error("Error fetching robots:", error);
-        return NextResponse.json({ success: false, message: "Internal server error" }, { status: 500 });
+        return NextResponse.json({ message: "Internal server error" }, { status: 500 });
     }
 };
 
@@ -27,15 +27,15 @@ const deleteRobot = async (req) => {
     const id = searchParams.get('id');
 
     if (!id) {
-        return NextResponse.json({ success: false, message: "Robot ID is required" }, { status: 400 });
+        return NextResponse.json({ message: "Robot ID is required" }, { status: 400 });
     }
 
     try {
         await Robot.deleteOne({ _id: id });
-        return NextResponse.json({ success: true, message: "Robot successfully deleted" });
+        return NextResponse.json({ message: "Robot successfully deleted" });
     } catch (error) {
         console.error("Error deleting robot:", error);
-        return NextResponse.json({ success: false, message: "Internal server error" }, { status: 500 });
+        return NextResponse.json({ message: "Internal server error" }, { status: 500 });
     }
 };
 
@@ -43,22 +43,22 @@ const createRobot = async (req) => {
     const body = await req.json();
 
     if (!body.name || !body.price) {
-        return NextResponse.json({ success: false, message: "Title and price are required" }, { status: 400 });
+        return NextResponse.json({ message: "Title and price are required" }, { status: 400 });
     }
 
     try {
         const robotDoc = await Robot.create({
             name: body.name,
-            description: body.desc,
+            description: body.description,
             price: body.price,
             robotImages: body.robotImages,
             features: body.features,
             type: body.type,
         });
-        return NextResponse.json({ success: true, data: robotDoc }, { status: 201 });
+        return NextResponse.json({ robotDoc }, { status: 201 });
     } catch (error) {
         console.error("Error creating robot:", error);
-        return NextResponse.json({ success: false, message: "Internal server error" }, { status: 500 });
+        return NextResponse.json({ message: "Internal server error" }, { status: 500 });
     }
 };
 
@@ -66,7 +66,7 @@ const updateRobot = async (req) => {
     const body = await req.json();
 
     if (!body._id || !body.name || !body.price) {
-        return NextResponse.json({ success: false, message: "ID, title, and price are required" }, { status: 400 });
+        return NextResponse.json({ message: "ID, title, and price are required" }, { status: 400 });
     }
 
     try {
@@ -74,7 +74,7 @@ const updateRobot = async (req) => {
             { _id: body._id },
             {
                 name: body.name,
-                description: body.desc,
+                description: body.description,
                 price: body.price,
                 robotImages: body.robotImages,
                 features: body.features,
@@ -83,13 +83,13 @@ const updateRobot = async (req) => {
         );
 
         if (updatedRobot.matchedCount === 0) {
-            return NextResponse.json({ success: false, message: "Robot not found" }, { status: 404 });
+            return NextResponse.json({ message: "Robot not found" }, { status: 404 });
         }
 
-        return NextResponse.json({ success: true, data: updatedRobot });
+        return NextResponse.json({ updatedRobot });
     } catch (error) {
         console.error("Error updating robot:", error);
-        return NextResponse.json({ success: false, message: "Internal server error" }, { status: 500 });
+        return NextResponse.json({ message: "Internal server error" }, { status: 500 });
     }
 };
 
@@ -109,7 +109,7 @@ const robotHandler = async (req) => {
         case "DELETE":
             return deleteRobot(req);
         default:
-            return NextResponse.json({ success: false, message: "Method not allowed" }, { status: 405 });
+            return NextResponse.json({ message: "Method not allowed" }, { status: 405 });
     }
 };
 

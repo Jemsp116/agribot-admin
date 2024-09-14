@@ -11,7 +11,7 @@ const EditProduct = () => {
     const URLArr = pathname.split('/')
     const id = URLArr[URLArr.length - 1]
 
-    const { productInfo, loading, error } = useProductData(`/api/robot/${id}`)
+    const { productInfo, loading, error } = useProductData(`/api/robots?id=${id}`)
 
     if (!id) {
         return <p>Invalid product ID.</p>

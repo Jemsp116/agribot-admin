@@ -61,35 +61,18 @@ const RobotsForm = ({
             const res = await axios.post('/api/upload', data);
             const links = res.data.links;
 
-            // const newImages = links.filter((link) => ({
-            //     imageId: '', // This will be set by the user in the form
-            //     imageURL: link,
-            //     imageName: '', // This will be set by the user in the form
-            // }));
-            const newImages = {
-                imageId: '', // This will be set by the user in the form
-                imageURL: links[links.length - 1],
-                imageName: '', // This will be set by the user in the form
-            }
-
-            // console.log("Links : ", links);
-            // console.log("Before URLs : ", form.imageURLs);
-
-            // console.log("My Object : ", { ...form, imageURLs: [...form.imageURLs, newImages] });
-
+            
             setForm(() => {
-                return { ...form, imageURLs: [...form.imageURLs, newImages] }
+                return { ...form, robotImages: [...form.robotImages, links[links.length - 1]] }
             })
 
-            // console.log("Form", form);
-
-            // console.log("URLs : ", form.imageURLs);
+            console.log("Links : ", links);
         }
         setIsUploading(false);
     }
 
     const updateImagesOrder = (imgOrder) => {
-        setForm({ ...form, imageURLs: imgOrder });
+        setForm({ ...form, robotImages: imgOrder });
     }
 
     const deleteImage = async () => {
@@ -110,7 +93,7 @@ const RobotsForm = ({
 
     const addProperty = () => {
         setForm(prev => {
-            return { ...prev, features: [...prev.features, { title: '', description: '' }] };
+            return { ...prev, features: [...prev.features, ''] };
         })
     }
 
@@ -147,9 +130,9 @@ const RobotsForm = ({
                                 </div>
                             )
                         })} */}
-                        {!!form.imageURLs?.length && form.imageURLs.map((link, index) => (
+                        {!!form.robotImages?.length && form.robotImages.map((link, index) => (
                             <div key={index} className='bg-white p-2 border border-gray-300 shadow-md rounded-sm w-auto h-28'>
-                                <Image className='image rounded-lg' width={100} height={100} src={link.imageURL} alt="product" />
+                                <Image className='image w-auto h-28 rounded-lg' width={200} height={200} src={link} alt="product" />
                             </div>
                         ))}
                     </ReactSortable>
@@ -171,7 +154,7 @@ const RobotsForm = ({
                         <input type="file" onChange={uploadImages} className='hidden' />
                     </label>
                 </div>
-                {!form.imageURLs?.length && (
+                {!form.robotImages?.length && (
                     <div className='text-red-600'>No images for this robot !</div>
                 )}
 
@@ -203,10 +186,10 @@ const RobotsForm = ({
                 <div className="my-4">
                     <h1>Key Features of Robot</h1>
                     <button type='button' onClick={addProperty} className='btn-green text-sm'>Add Features</button>
-                    {form?.features?.length > 0 && form.features.map((property, index) => {
+                    {!!form.features?.length && form.features.map((property, index) => {
                         return (
                             <div key={index} className='flex gap-1 mt-2'>
-                                <input value={property.title} onChange={(ev) => { propertyNameChange(index, ev.target.value) }} className='m-0' type="text" placeholder='SubTitle' />
+                                <input value={property} onChange={(ev) => { propertyNameChange(index, ev.target.value) }} className='m-0' type="text" placeholder='Features' />
                                 <button onClick={() => { removeProperty(index) }} type='button' className='btn-red font-semibold'>Remove</button>
                             </div>
                         )
