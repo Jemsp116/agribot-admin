@@ -98,8 +98,6 @@ const updateRobot = async (req) => {
 
 // Main handler function
 const robotHandler = async (req) => {
-    // Run the CORS middleware
-    await runMiddleware(req, res, cors);
     await mongooseConnect();
 
     const method = req.method;
