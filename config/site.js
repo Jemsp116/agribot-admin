@@ -18,6 +18,6 @@ export const siteMap = [
     {
         label: 'Track',
         link: '/track',
-        icon: '/MessageLogo.svg'
+        icon: '/mapLogo.svg'
     },
 ]
