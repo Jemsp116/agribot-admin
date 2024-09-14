@@ -15,4 +15,9 @@ export const siteMap = [
         link: '/messages',
         icon: '/MessageLogo.svg'
     },
+    {
+        label: 'Track',
+        link: '/track',
+        icon: '/MessageLogo.svg'
+    },
 ]
