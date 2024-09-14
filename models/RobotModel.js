@@ -9,7 +9,7 @@ const RobotSchema = new Schema({
         type: String,
         required: true
     },
-    robotImages: {
+    images: {
         type: [String],  // Assuming it's an array of image URLs
         default: []
     },

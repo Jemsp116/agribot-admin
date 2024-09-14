@@ -12,10 +12,10 @@ const getRobots = async (req) => {
             if (!robot) {
                 return NextResponse.json({ message: "Robot not found" }, { status: 404 });
             }
-            return NextResponse.json({ ...robot });
+            return NextResponse.json(robot);
         }
         const robots = await Robot.find();
-        return NextResponse.json({ ...robots });
+        return NextResponse.json(robots);
     } catch (error) {
         console.error("Error fetching robots:", error);
         return NextResponse.json({ message: "Internal server error" }, { status: 500 });
@@ -51,11 +51,11 @@ const createRobot = async (req) => {
             name: body.name,
             description: body.description,
             price: body.price,
-            robotImages: body.robotImages,
+            images: body.images,
             features: body.features,
             type: body.type,
         });
-        return NextResponse.json({ robotDoc }, { status: 201 });
+        return NextResponse.json(robotDoc, { status: 201 });
     } catch (error) {
         console.error("Error creating robot:", error);
         return NextResponse.json({ message: "Internal server error" }, { status: 500 });
@@ -76,7 +76,7 @@ const updateRobot = async (req) => {
                 name: body.name,
                 description: body.description,
                 price: body.price,
-                robotImages: body.robotImages,
+                images: body.images,
                 features: body.features,
                 type: body.type,
             }
@@ -86,7 +86,7 @@ const updateRobot = async (req) => {
             return NextResponse.json({ message: "Robot not found" }, { status: 404 });
         }
 
-        return NextResponse.json({ updatedRobot });
+        return NextResponse.json(updatedRobot);
     } catch (error) {
         console.error("Error updating robot:", error);
         return NextResponse.json({ message: "Internal server error" }, { status: 500 });
