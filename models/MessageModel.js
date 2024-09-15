@@ -1,11 +1,11 @@
 import mongoose, { Schema, model, models } from "mongoose"
 
 const MessageSchema = new Schema({
-    firstname: {
+    firstName: {
         type: String,
         required: [true, "Must provide a name."],
     },
-    lastname: {
+    lastName: {
         type: String,
         required: [true, "Must provide a name."],
     },

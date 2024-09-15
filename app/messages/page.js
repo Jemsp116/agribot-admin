@@ -7,8 +7,9 @@ import axios from 'axios'
 const Messages = () => {
   const [project, setProject] = useState([])
   useEffect(() => {
-    axios.get(`https://wcb-server.vercel.app/contactUs/getall`).then((res) => {
-      setProject(res.data)
+    axios.get(`/api/message`).then((res) => {
+      setProject(res.data);
+      console.log(res.data);
     })
   }, [])
   return (

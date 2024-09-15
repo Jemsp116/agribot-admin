@@ -17,8 +17,7 @@ const Nav = ({ show }) => {
     const router = useRouter();
 
     const logout = async () => {
-        router.push('/');
-        // await signOut();
+        router.push('/api/auth/logout');
     }
 
     return (
@@ -34,10 +33,10 @@ const Nav = ({ show }) => {
                     </Link>
                 ))}
 
-                {/* <button className={inactiveLinks} onClick={logout}>
+                <button className={inactiveLinks} onClick={logout}>
                     <Image src={'/Logout.svg'} alt='logout' width={24} height={24} className={activeIcons} />
                     Logout
-                </button> */}
+                </button>
             </nav>
 
 

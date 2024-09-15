@@ -14,10 +14,8 @@ const MessagePage = () => {
         if (!id) {
             return;
         }
-        axios.get(`https://wcb-server.vercel.app/contactUs/get/${id}`).then((res) => {
+        axios.get(`/api/message?id=${id}`).then((res) => {
             setProductInfo(res.data)
-            // console.log("Data : ", res.data)
-            // console.log("Id : ", id)
         }).catch((err) => {
             console.log("Error : ", err)
         })

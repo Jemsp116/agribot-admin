@@ -23,8 +23,6 @@ const getRobots = async (req) => {
 };
 
 
-
-
 const deleteRobot = async (req) => {
     const { searchParams } = new URL(req.url);
     const id = searchParams.get('id');

@@ -33,10 +33,10 @@ const ManageOrdersPage = () => {
           <div className="overflow-x-auto">
             <table {...getTableProps()} className="min-w-full bg-white border border-gray-300 rounded-lg shadow-lg">
               <thead>
-                {headerGroups.map(headerGroup => (
-                  <tr {...headerGroup.getHeaderGroupProps()}>
-                    {headerGroup.headers.map(column => (
-                      <th {...column.getHeaderProps()} className="py-3 px-4 border-b border-gray-300 text-left text-sm font-semibold text-gray-700">
+                {headerGroups.map((headerGroup, index) => (
+                  <tr key={index} {...headerGroup.getHeaderGroupProps()}>
+                    {headerGroup.headers.map((column,index) => (
+                      <th key={index} {...column.getHeaderProps()} className="py-3 px-4 border-b border-gray-300 text-left text-sm font-semibold text-gray-700">
                         {column.render('Header')}
                       </th>
                     ))}
@@ -44,10 +44,10 @@ const ManageOrdersPage = () => {
                 ))}
               </thead>
               <tbody {...getTableBodyProps()}>
-                {rows.map(row => {
+                {rows.map((row, index)=> {
                   prepareRow(row);
                   return (
-                    <tr {...row.getRowProps()} className="hover:bg-gray-100">
+                    <tr key={index} {...row.getRowProps()} className="hover:bg-gray-100">
                       {row.cells.map(cell => (
                         <td {...cell.getCellProps()} className="py-3 px-4 border-b border-gray-300 text-sm text-gray-700">
                           {cell.render('Cell')}

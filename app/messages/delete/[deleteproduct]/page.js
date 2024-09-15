@@ -15,7 +15,7 @@ const DeleteProduct = () => {
         if(!id){
             return;
         }
-        axios.get(`https://wcb-server.vercel.app/contactUs/get/${id}`)
+        axios.get(`/api/message?id=${id}`)
         .then((res)=>{
             setProductInfo(res.data);
         })
@@ -26,7 +26,7 @@ const DeleteProduct = () => {
     }
 
     const deleteProduct = async ()=>{
-        await axios.delete(`https://wcb-server.vercel.app/contactUs/delete/${id}`);
+        await axios.delete(`/api/message?id=${id}`);
         setGoToProducts(true)
     }
   return (

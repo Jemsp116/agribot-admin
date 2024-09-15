@@ -1,5 +1,8 @@
-export {default} from 'next-auth/middleware';
+// middleware.js
+import { withMiddlewareAuthRequired } from '@auth0/nextjs-auth0/edge';
+
+export default withMiddlewareAuthRequired();
 
 export const config = {
-    matcher: ['/home', '/add-robot'],
-}
+  matcher: ['/' ,'/add-robot', '/Analytics', '/messages', '/register', '/Manage-orders', '/home', '/api/robots', '/api/upload'],
+};
