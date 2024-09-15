@@ -57,8 +57,8 @@ const ManageOrdersPage = () => {
                   prepareRow(row);
                   return (
                     <tr key={index} {...row.getRowProps()} className="hover:bg-gray-100">
-                      {row.cells.map(cell => (
-                        <td {...cell.getCellProps()} className="py-3 px-4 border-b border-gray-300 text-sm text-gray-700">
+                      {row.cells.map((cell, i) => (
+                        <td key={i} {...cell.getCellProps()} className="py-3 px-4 border-b border-gray-300 text-sm text-gray-700">
                           {cell.render('Cell')}
                         </td>
                       ))}
