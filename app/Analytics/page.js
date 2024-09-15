@@ -82,7 +82,7 @@ const AnalyticsCharts = () => {
 };
 
 const AnalyticsPage = () => {
-  const router = useRouter(); // Use Next.js router from next/navigation
+  // const router = useRouter(); // Use Next.js router from next/navigation
 
   return (
     <Layout>

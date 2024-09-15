@@ -4,10 +4,11 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { redirect } from 'next/navigation';
 import { useUser } from '@auth0/nextjs-auth0/client';
+import { useRouter } from 'next/navigation';
 
 // Admin Dashboard Card Component
 const AdminCard = ({ title, description, icon, link }) => {
-  
+  const router = useRouter();
 
   return (
     <motion.div
